@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
 import { Poppins } from "next/font/google";
 import { UserProvider } from "@/context/UserContext";
 import { Toaster } from "react-hot-toast";
