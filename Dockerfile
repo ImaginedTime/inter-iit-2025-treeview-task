@@ -23,5 +23,4 @@ RUN npm run build
 EXPOSE 3000
 
 # Step 9: Define the command to start the application
-# node .next/standalone/server.js
-CMD ["node", ".next/standalone/server.js"]
+CMD ["npm", "start"]

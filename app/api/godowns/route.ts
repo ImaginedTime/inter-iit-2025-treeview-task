@@ -6,13 +6,13 @@ const prisma = new PrismaClient();
 
 export async function GET(req: NextRequest) {
 	try {
-		// let authResponse = authenticateJWT(req);
+		let authResponse = authenticateJWT(req);
 
-		// if (authResponse instanceof NextResponse) {
-		// 	return authResponse;
-		// }
+		if (authResponse instanceof NextResponse) {
+			return authResponse;
+		}
 
-		// authResponse = authResponse as JwtPayload;
+		authResponse = authResponse as JwtPayload;
 
 		const godown = await prisma.godown.findMany({});
 
