@@ -12,7 +12,11 @@ export default function SideBar() {
 	const { user, isLoggedIn, setIsLoggedIn, setUser } = useUserContext();
 
 	const [sidebarWidth, setSidebarWidth] = useState(
-		window.innerWidth > 400 ? 400 : window.innerWidth - 50
+		typeof window !== "undefined"
+			? window.innerWidth > 400
+				? 400
+				: window.innerWidth - 50
+			: 400
 	);
 	const [isDragging, setIsDragging] = useState(false);
 	const [menuOpen, setMenuOpen] = useState(false);
@@ -46,6 +50,8 @@ export default function SideBar() {
 	};
 
 	useEffect(() => {
+		if (typeof window === "undefined") return;
+
 		if (isDragging) {
 			window.addEventListener("mousemove", handleMouseMove);
 			window.addEventListener("mouseup", handleMouseUp);
@@ -58,10 +64,6 @@ export default function SideBar() {
 			window.removeEventListener("mouseup", handleMouseUp);
 		};
 	}, [isDragging]);
-
-	useEffect(() => {
-		setSidebarWidth(window.innerWidth > 400 ? 400 : window.innerWidth - 50);
-	}, [window.innerWidth]);
 
 	return (
 		<>
