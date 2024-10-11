@@ -25,7 +25,7 @@ export default function Page() {
 		<div className="block md:flex text-gray-700">
 			<SideBar />
 
-			<div className="p-4 md:p-8 flex-1 bg-[#f5f5f7] text-gray-800 -z-20">
+			<div className="p-4 md:p-8 flex-1 bg-[#f5f5f7] text-gray-800 z-20">
 				{item ? (
 					<ItemCard item={item} setSelectedItem={setSelectedItem} />
 				) : (
