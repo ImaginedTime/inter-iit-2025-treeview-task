@@ -85,7 +85,7 @@ export default function Login() {
 						<input
 							type="text"
 							className="mt-1 block w-full px-6 py-3 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-							placeholder="Email or phone number"
+							placeholder="Email Address"
 							value={email}
 							onChange={(e) => setEmail(e.target.value)}
 							required
