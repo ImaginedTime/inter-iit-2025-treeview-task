@@ -7,7 +7,7 @@
     "generate": "npx prisma generate",
     "build": "npm run generate && next build",
     "start": "next start",
-    "seed": "node seed.js",
+    "seed": "npm run generate && node seed.js",
     "lint": "next lint"
   },
   "dependencies": {
