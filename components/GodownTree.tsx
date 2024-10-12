@@ -21,12 +21,17 @@ export default function GodownTree({ closeMenu }: { closeMenu: () => void }) {
 
 	useEffect(() => {
 		const fetchData = async () => {
+			let authToken;
 			try {
 				const godowns = localStorage.getItem("godowns");
 				const items = localStorage.getItem("items");
+				const token = localStorage.getItem("token");
 				if (godowns && items) {
 					setGodowns(JSON.parse(godowns));
 					setItems(JSON.parse(items));
+				}
+				if(token) {
+					authToken = `Bearer ${token}`;
 				}
 			} catch (error) {
 				console.error(
@@ -36,7 +41,11 @@ export default function GodownTree({ closeMenu }: { closeMenu: () => void }) {
 			}
 
 			try {
-				const response = await axios.get("/api/godowns");
+				const response = await axios.get("/api/godowns", {
+					headers: {
+						Authorization: authToken
+					}
+				});
 				setGodowns(response.data);
 
 				// store the godowns in local storage
@@ -46,7 +55,11 @@ export default function GodownTree({ closeMenu }: { closeMenu: () => void }) {
 			}
 
 			try {
-				const response = await axios.get("/api/items");
+				const response = await axios.get("/api/items", {
+					headers: {
+						Authorization: authToken
+					}
+				});
 				setItems(response.data);
 
 				// store the items in local storage
