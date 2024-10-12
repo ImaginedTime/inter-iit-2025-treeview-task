@@ -8,6 +8,13 @@ Running the docker container:
 docker-compose up
 ```
 
+The database has been seeded with the godowns and items info.
+If required, To seed the database with the info, use the command:
+
+```bash
+npm run seed
+```
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
